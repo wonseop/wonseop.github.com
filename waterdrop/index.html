@@ -3,7 +3,6 @@
 <head>
 	<style>
 	.ui-mindmap {
-		zoom: 0.5;
 	}
 	.ui-group, .ui-group * {
 		position: absolute;
@@ -35,12 +34,12 @@
 	}
 
 	.ui-drop {
-		background-color:white;	
+		background-color:white;
 		background-repeat:no-repeat;
 		background-attachment:fixed;
 		background-position:center; 
-		width:150px;
-		height:150px;
+		width: 150px;
+		height: 150px;
 		border: 1px solid #aaa;
 		overflow: hidden;
 		-webkit-border-top-left-radius: 0;
@@ -116,13 +115,23 @@
 	<script src="http://ajax.googleapis.com/ajax/libs/jquery/1.10.2/jquery.js"></script>
 	<script>
 		$( document ).ready( function () {
-			var i, clone;
+			var i, left, top;
 			for ( i = 0; i < 100; i++ ) {
-				clone = $( "#group" ).clone();
-				clone.attr( "id", "group" + 1 ).css( { 
-					"top": ( 1000 * ( i % 10 ) ) + "px", 
-					"left": ( 1000 * parseInt( i / 10, 10 ) ) + "px"
+				left = 1000 * ( i % 10 );
+				top = 1000 * parseInt( i / 10, 10 );
+
+				$( "#group" ).clone().attr( "id", "group" + i ).css( {
+					"top": top + "px",
+					"left": left + "px"
 				} ).appendTo( ".ui-mindmap" );
+
+				$( "g#group-path" ).clone().attr( "id", "group-path-" + i ).appendTo( $( "svg" ) )
+					.find( "line" ).each( function () {
+						$( this ).attr( "x1", +$( this ).attr( "x1" ) + left );
+						$( this ).attr( "y1", +$( this ).attr( "y1" ) + top );
+						$( this ).attr( "x2", +$( this ).attr( "x2" ) + left );
+						$( this ).attr( "y2", +$( this ).attr( "y2" ) + top );
+					} );
 			}
 			
 		} );
@@ -133,15 +142,15 @@
 		<div class="ui-graphic-container">
 			<svg height="6000" version="1.1" width="10000" xmlns="http://www.w3.org/2000/svg" style="overflow: hidden; position: relative;">
 				<defs style="-webkit-tap-highlight-color: rgba(0, 0, 0, 0);"></defs>
-				<g class="ui-svg-group" id="group-path" fill="none" stroke="#ccc" stroke-width="2.2" stroke-width="2.2" stroke-linecap="square" opacity="1" style="-webkit-tap-highlight-color: rgba(0, 0, 0, 0); stroke-linecap: square; opacity: 1;">
-					<path d="M393,100 L393,350 Z"></path>
-					<path d="M393,350 L393,650 Z"></path>
-					<path d="M75,368 L300,368 Z"></path>
-					<path d="M430,368 L700,368 Z"></path>
-					<path d="M393,100 L393,350 Z"></path>
-					<path d="M393,350 L393,650 Z"></path>
-					<path d="M75,368 L300,368 Z"></path>
-					<path d="M430,368 L700,368 Z"></path>
+				<g class="ui-svg-group" id="group-path" fill="none" stroke="#ccc" stroke-width="2.2" stroke-width="2.2" opacity="1" style="-webkit-tap-highlight-color: rgba(0, 0, 0, 0); stroke-linecap: square; opacity: 1;">
+					<line x1="393" y1="142" x2="393" y2="376" />
+					<line x1="393" y1="672" x2="393" y2="376" />
+					<line x1="77" y1="368" x2="393" y2="368" />
+					<line x1="700" y1="368" x2="393" y2="368" />
+					<line x1="231" y1="206" x2="393" y2="368" />
+					<line x1="548" y1="216" x2="393" y2="368" />
+					<line x1="231" y1="536" x2="393" y2="376" />
+					<line x1="548" y1="522" x2="393" y2="376" />
 				</g>
 			</svg>
 		</div>
