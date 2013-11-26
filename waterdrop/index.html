@@ -3,7 +3,7 @@
 <head>
 	<style>
 	.ui-mindmap {
-		zoom: 0.2;
+		zoom: 0.5;
 	}
 	.ui-group, .ui-group * {
 		position: absolute;
@@ -117,12 +117,12 @@
 	<script>
 		$( document ).ready( function () {
 			var i, clone;
-			for ( i = 0; i < 1000; i++ ) {
+			for ( i = 0; i < 100; i++ ) {
 				clone = $( "#group" ).clone();
 				clone.attr( "id", "group" + 1 ).css( { 
 					"top": ( 1000 * ( i % 10 ) ) + "px", 
 					"left": ( 1000 * parseInt( i / 10, 10 ) ) + "px"
-				} ).appendTo( ".ui-mindmap" );				
+				} ).appendTo( ".ui-mindmap" );
 			}
 			
 		} );
