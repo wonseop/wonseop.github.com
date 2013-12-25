@@ -1,6 +1,7 @@
 <!DOCTYPE html>
 <html>
 <head>
+	<meta charset="utf-8">
 	<style>
 	.ui-mindmap {
 	}
@@ -60,14 +61,47 @@
 		background-position:center;
 		background-size:100% 100%;
 		background-color: #fff;
-		top: 50%;
+		top: -20%;
 		left: -20%;
 		width: 140%;
 		height: 140%;
 		display: block;
 		border: 1px solid #aaa;
-		-webkit-transform-origin:center top;
-		transform-origin:center top;
+		font-size: 0.8rem;
+	}
+
+	.ui-drop-inner .ui-icon-left {
+		top: 30%;
+		left: 30%;
+		width: 15%;
+		height: 10%;
+	}
+
+	.ui-drop-inner .ui-title {
+		top: 30%;
+		left: 50%;
+		line-height: 1.2rem;
+		vertical-align: middle;
+	}
+
+	.ui-drop-inner .ui-content {
+		top: 42%;
+		left: 25%;
+		width: 50%;
+		height: 30%;
+		text-overflow: ellipsis;
+		white-space: nowrap;
+		word-wrap: break-word;
+	}
+
+	.ui-drop-inner .ui-bottom {
+		background-position:center;
+		background-size:100% 50%;
+		top: 65%;
+		width: 100%;
+		height: 100%;
+		display: block;
+		border: 1px solid #aaa;
 	}
 
 	.ui-drop-n {
@@ -146,7 +180,7 @@
 	<script>
 		$( document ).ready( function () {
 			var i, left, top;
-			for ( i = 0; i < 100; i++ ) {
+			for ( i = 1; i < 100; i++ ) {
 				left = 1000 * ( i % 10 );
 				top = 1000 * parseInt( i / 10, 10 );
 
@@ -190,28 +224,68 @@
 				<span class="ui-center-inner ui-center-corner-all" style="background-image:url('./images/test01.png');"></span>
 			</div>
 			<div class="ui-drop ui-drop-n" style="top:0px;left:325px;">
-				<span class="ui-drop-inner" style="background-image:url('./images/test02.jpg');"></span>
+				<div class="ui-drop-inner">
+					<img class="ui-icon-left" src="./images/capsule.png">
+					<span class="ui-title">테스트</span>
+					<span class="ui-content">글을 추가하고 있는데 영역처리가 심히 궁금하시기는 함...</span>
+					<span class="ui-bottom" style="background-image:url('./images/test02.jpg');"></span>
+				</div>
 			</div>
 			<div class="ui-drop ui-drop-ne" style="top:75px;left:555px;">
-				<span class="ui-drop-inner" style="background-image:url('./images/test03.jpg');"></span>
+				<div class="ui-drop-inner">
+					<img class="ui-icon-left" src="./images/capsule.png">
+					<span class="ui-title">테스트</span>
+					<span class="ui-content">글을 추가하고 있는데 영역처리가 심히 궁금하시기는 함...</span>
+					<span class="ui-bottom" style="background-image:url('./images/test03.jpg');"></span>
+				</div>
 			</div>
 			<div class="ui-drop ui-drop-e" style="top:300px;left:625px;">
-				<span class="ui-drop-inner" style="background-image:url('./images/test04.jpg');"></span>
+				<div class="ui-drop-inner">
+					<img class="ui-icon-left" src="./images/capsule.png">
+					<span class="ui-title">테스트</span>
+					<span class="ui-content">글을 추가하고 있는데 영역처리가 심히 궁금하시기는 함...</span>
+					<span class="ui-bottom" style="background-image:url('./images/test03.jpg');"></span>
+				</div>
 			</div>
 			<div class="ui-drop ui-drop-se" style="top:530px;left:555px;">
-				<span class="ui-drop-inner" style="background-image:url('./images/test05.jpg');"></span>
+				<div class="ui-drop-inner">
+					<img class="ui-icon-left" src="./images/capsule.png">
+					<span class="ui-title">테스트</span>
+					<span class="ui-content">글을 추가하고 있는데 영역처리가 심히 궁금하시기는 함...</span>
+					<span class="ui-bottom" style="background-image:url('./images/test03.jpg');"></span>
+				</div>
 			</div>
 			<div class="ui-drop ui-drop-s" style="top:600px;left:325px;">
-				<span class="ui-drop-inner" style="background-image:url('./images/test06.jpg');"></span>
+				<div class="ui-drop-inner">
+					<img class="ui-icon-left" src="./images/capsule.png">
+					<span class="ui-title">테스트</span>
+					<span class="ui-content">글을 추가하고 있는데 영역처리가 심히 궁금하시기는 함...</span>
+					<span class="ui-bottom" style="background-image:url('./images/test03.jpg');"></span>
+				</div>
 			</div>
 			<div class="ui-drop ui-drop-sw" style="top:530px;left:100px;">
-				<span class="ui-drop-inner" style="background-image:url('./images/test07.jpg');"></span>
+				<div class="ui-drop-inner">
+					<img class="ui-icon-left" src="./images/capsule.png">
+					<span class="ui-title">테스트</span>
+					<span class="ui-content">글을 추가하고 있는데 영역처리가 심히 궁금하시기는 함...</span>
+					<span class="ui-bottom" style="background-image:url('./images/test03.jpg');"></span>
+				</div>
 			</div>
 			<div class="ui-drop ui-drop-w" style="top:300px;left:0px;">
-				<span class="ui-drop-inner" style="background-image:url('./images/test08.jpg');"></span>
+				<div class="ui-drop-inner">
+					<img class="ui-icon-left" src="./images/capsule.png">
+					<span class="ui-title">테스트</span>
+					<span class="ui-content">글을 추가하고 있는데 영역처리가 심히 궁금하시기는 함...</span>
+					<span class="ui-bottom" style="background-image:url('./images/test03.jpg');"></span>
+				</div>
 			</div>
 			<div class="ui-drop ui-drop-nw" style="top:75px;left:100px;">
-				<span class="ui-drop-inner" style="background-image:url('./images/test09.jpg');"></span>
+				<div class="ui-drop-inner">
+					<img class="ui-icon-left" src="./images/capsule.png">
+					<span class="ui-title">테스트</span>
+					<span class="ui-content">글을 추가하고 있는데 영역처리가 심히 궁금하시기는 함...</span>
+					<span class="ui-bottom" style="background-image:url('./images/test03.jpg');"></span>
+				</div>
 			</div>
 		</div>
 	</div>
