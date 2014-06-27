@@ -1,0 +1,146 @@
+<!DOCTYPE html> 
+<html>
+<head>
+	<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge, chrome=1">
+	<title>SWE Demo - Web Mail</title>
+	<style type="text/css">
+		table {
+		    border-width: 1px;
+		    border-style: solid;
+		    border-color: black;
+		    border-collapse: collapse;
+		}
+
+		table td {
+		    border-width: 1px;
+		    border-style: solid;
+		    border-color: black;
+		}
+
+		table td.w-resize {
+		   cursor: col-resize;	  
+		}
+
+		table td.h-resize {
+		    cursor: row-resize;
+		}
+
+		body.resizing {
+		  -webkit-user-select: none;  
+		  -moz-user-select: none;    
+		  -ms-user-select: none;      
+		  user-select: none;
+		  -webkit-user-drag: none;
+		}
+
+		.mce-item-table th,
+		.mce-item-table td {
+			min-width: 12px;
+			min-height: 12px;
+		}
+	</style>
+	<script src="http://code.jquery.com/jquery-2.1.1.js"></script>
+</head>
+
+<body>
+    mouseX:<div id="mouseX">0</div><br>
+    cellX:<div id="cellX">0</div><br>
+    cellWidth:<div id="cellWidth">0</div><br>    
+	<table class="mce-item-table">
+		<tbody>
+			<tr>
+				<td><br></td>
+				<td><br></td>
+				<td><br></td>
+				<td><br></td>
+				<td><br></td>
+			</tr>
+			<tr>
+				<td><br></td>
+				<td><br></td>
+				<td><br></td>
+				<td><br></td>
+				<td><br></td>
+			</tr>
+			<tr>
+				<td><br></td>
+				<td><br></td>
+				<td><br></td>
+				<td><br></td>
+				<td><br></td>
+			</tr>
+			<tr>
+				<td><br></td>
+				<td><br></td>
+				<td><br></td>
+				<td><br></td>
+				<td><br></td>
+			</tr>
+			<tr>
+				<td><br></td>
+				<td><br></td>
+				<td><br></td>
+				<td><br></td>
+				<td><br></td>
+			</tr>
+		</tbody>
+	</table>
+<script>
+$(function() {
+    var start,
+    	startX,
+    	startWidth;
+    var pressed;
+    var container = $("table#container");
+    var term = 3;
+    
+    $("table th, table td").mousemove( function (e) {
+    	var cell = $(this),
+    		cellPos = cell.position(),
+    		cellMin = [ cellPos.left + 3, cellPos.top + 3 ],
+    		cellMax = [ cellPos.left + cell.width() - 3, cellPos.top + cell.height() - 3 ];
+
+		if ( !pressed ) {
+	    	if ( e.pageX < cellMin[0] ) {
+	    		$(this).addClass("w-resize resize-min");
+			} else if ( e.pageY < cellMin[1] ) {
+	    		$(this).addClass("h-resize resize-min");
+			} else if ( e.pageX > cellMax[0] ) {
+	    		$(this).addClass("w-resize resize-max");
+			} else if ( e.pageY > cellMax[1] ) {
+	    		$(this).addClass("h-resize resize-max");
+			} else {
+	   			$(this).removeClass("w-resize h-resize resize-min resize-max");
+			}
+		}
+
+		$("#mouseX").text( e.pageX );
+    	$("#cellX").text( cell.position().left );
+    	$("#cellWidth").text( cell.width() );
+    }).mousedown(function(e) {
+        start = $('table tr td:nth-child('+ ( $(this).index() + 1 ) +')');
+        if ( !start.length ) {
+        	return;
+        }
+
+       	startX = e.pageX;
+       	startWidth = start.eq(0).width();
+       	$( "body" ).addClass("resizing");
+
+        pressed = true;
+    });
+
+   	$(document).mousemove(function(e) {
+   		if (pressed) {
+	   		var newWidth = startWidth + (e.pageX - startX);
+	        start.width(newWidth);	
+   		}
+    }).mouseup(function() {
+    	$( "body" ).removeClass("resizing");
+   		pressed = false;
+    });
+});
+</script>
+</body>
+</html>
